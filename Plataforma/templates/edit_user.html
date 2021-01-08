@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'Plataforma/css/login.css' %}">
+{% endblock %}
+{% block title %}Editar {{ user.username }}{% endblock %}
+{% block content %}
+
+<main class="form-signin">
+    <h2>Editar usuario:</h2>
+    <form method="post" id="form">
+        {% csrf_token %}
+
+        <label for="username">Username:</label>
+        {{ form.username }}
+        <label for="nombre">Nombre:</label>
+        {{ form.first_name }}
+        <label for="apelido">Apellido:</label>
+        {{ form.last_name }}
+        <label for="email">E-mail:</label>
+        {{ form.email }}
+
+        <p id="cCont"><a href="{% url 'cambiarContView' user.id %}">Cambiar password</a></p> 
+
+        <button id="boton" class="w-100 btn btn-lg btn-primary" type="submit">Guardar</button>
+
+        <a id="regresar" href="{% url 'usersView' %}" class="btn btn-secondary">regresar</a>
+    </form>
+</main>
+
+{% endblock %}

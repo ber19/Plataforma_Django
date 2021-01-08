@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'Plataforma/css/login.css' %}">
+{% endblock %}
+{% block title %}Nueva actividad{% endblock %}
+{% block content %}
+<main class="form-signin">
+    <h2>Nueva actividad:</h2>
+    <form method="post" id="form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.user }}
+        
+        <label for="creacion">Fecha de creacion:</label>
+        {{ form.creacion }}
+        <label for="actividad">Actividad:</label>
+        {{ form.activ }}
+        <label for="comentario">Comentario:</label>
+        {{ form.comentario }}
+        <label for="archivo" id="flag">Fecha de creacion:</label>
+        {{ form.archivo }}  
+
+        <button id="boton" class="w-100 btn btn-lg btn-primary" type="submit">Registrar</button>
+    </form>
+</main>
+
+<script src="{% static 'Plataforma/js/new_actividad.js' %}"></script>
+{% endblock %}

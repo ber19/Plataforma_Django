@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'Plataforma/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Plataforma/css/login.css' %}">
+</head>
+
+<body>
+    <main class="form-signin">
+        <form method="post">
+            {% csrf_token %}
+
+            {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+            <div class="alert alert-danger">
+                <span class="glyphicon glyphicon-exclamation-sign"></span> {{ error }}
+            </div>
+            {% endfor %}
+            {% endfor %}
+
+            {{ form.username }}
+            {{ form.password }}
+            <button id="boton" class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
+        </form>
+    </main>
+</body>
+
+</html>

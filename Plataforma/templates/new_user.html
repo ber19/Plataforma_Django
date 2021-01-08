@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'Plataforma/css/login.css' %}">
+{% endblock %}
+{% block title %}Nuevo usuario{% endblock %}
+{% block content %}
+<main class="form-signin">
+    <h2>Nuevo usuario:</h2>
+    <form method="post" id="form">
+        {% csrf_token %}
+
+        {% for field, errors in form.errors.items %}
+        {% for error in errors %}
+        <div class="alert alert-danger">
+            {{ error }}
+        </div>
+        {% endfor %}
+        {% endfor %}
+
+        <label for="username" id="flag1">Username:</label>
+        {{ form.username }}
+        <label for="password">Contraseña:</label>
+        {{ form.password }}
+        {{ form.passwordA }}
+        <label for="nombre">Nombre:</label>
+        {{ form.nombre }}
+        <label for="apelido">Apellido:</label>
+        {{ form.apellido }}
+        <label for="email">E-mail:</label>
+        {{ form.email }}
+
+        <button id="boton" class="w-100 btn btn-lg btn-primary" type="submit">Registrar</button>
+    </form>
+</main>
+
+<script src="{% static 'Plataforma/js/new_user.js' %}"></script>
+{% endblock %}
