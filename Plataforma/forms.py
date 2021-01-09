@@ -41,14 +41,15 @@ class NewUserForm(forms.Form):
         self.fields["password"].widget.attrs.update({
             "id": "password",
             "class": "form-control",
-            "required": True
+            "required": True,
         })
         self.fields["passwordA"].widget = forms.PasswordInput()
         self.fields["passwordA"].widget.attrs.update({
             "id" : "passwordA",
             "class" : "form-control",
             "placeholder" : "Confirme contraseña",
-            "required" : True
+            "required" : True,
+
         })
         self.fields["nombre"].widget.attrs.update({
             "id" : "nombre",
@@ -60,6 +61,7 @@ class NewUserForm(forms.Form):
             "class" : "form-control",
             "required" : True
         })
+        self.fields["email"].widget = forms.EmailInput()
         self.fields["email"].widget.attrs.update({
             "id" : "email",
             "class" : "form-control",

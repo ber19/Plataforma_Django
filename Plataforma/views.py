@@ -73,7 +73,7 @@ def newUserView(request):
         if request.method == "POST":
             form = NewUserForm(request.POST)
             if form.is_valid():
-                username = form.cleaned_data["username"]
+                username = form.cleaned_data["username"].strip()
                 password = form.cleaned_data["passwordA"]
                 nombre = form.cleaned_data["nombre"]
                 apellido = form.cleaned_data["apellido"]
