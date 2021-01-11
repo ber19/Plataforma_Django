@@ -1,6 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
 from Plataforma.views import *
+from rest_framework import routers
+from Plataforma.api import views
+
+router = routers.DefaultRouter()
+router.register(r'usuarios', views.UsuariosViewSet)
+router.register(r'actividades/(?P<id>[0-9]+)', views.ActividadesViewSet, basename="actividades")
 
 urlpatterns = [
     path("", loginView, name="login"),
@@ -13,5 +19,9 @@ urlpatterns = [
     path("cambiar_cont/<int:id>", cambiarContView, name="cambiarContView"),
     path("del_user/<int:id>", deleteUser, name="deleteUserView"),
     path("new_activ/<int:id>", newActView, name="newActView"),
-    path("actividades/<int:id>", activsUserView, name="activsUserView")
+    path("actividades/<int:id>", activsUserView, name="activsUserView"),
+    #--------API----------#
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace="rest_framework"))
+
 ]
