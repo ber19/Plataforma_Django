@@ -7,6 +7,7 @@ from Plataforma.api import views
 router = routers.DefaultRouter()
 router.register(r'usuarios', views.UsuariosViewSet)
 router.register(r'actividades/(?P<id>[0-9]+)', views.ActividadesViewSet, basename="actividades")
+router.register(r'newactividad', views.NewActividadViewSet, basename="newactividad")
 
 urlpatterns = [
     path("", loginView, name="login"),
