@@ -23,6 +23,7 @@ class UsuariosViewSet(viewsets.ModelViewSet):
 
 class ActividadesViewSet(viewsets.ModelViewSet):
     serializer_class = ActividadSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user = self.kwargs["id"]
@@ -32,6 +33,7 @@ class ActividadesViewSet(viewsets.ModelViewSet):
 class NewActividadViewSet(viewsets.ModelViewSet):
     queryset = Actividad.objects.all()
     serializer_class = NewActividadSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_serializer_context(self):
         return {
