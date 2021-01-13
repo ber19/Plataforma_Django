@@ -22,7 +22,7 @@
                 <td>{{ actividad.creacion }}</td>
                 <td>{{ actividad.activ }}</td>
                 <td>{{ actividad.comentario }}</td>
-                <td>{{ actividad.archivo }}</td>
+                <td><a href="{{ actividad.archivo.url }}">{{ actividad.archivo.name }}</a></td>
             </tr>
             {% endfor %}
         </tbody>
